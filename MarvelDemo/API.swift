@@ -17,7 +17,7 @@ class API {
             "hash": APIConfig.hash]
   }
   
-  func getCharacters(completion: @escaping (Characters?, Error?) -> Void) {
+  func getCharacters(with offset: Int? = nil, completion: @escaping (Characters?, Error?) -> Void) {
     let session = URLSession(configuration: .default)
     
     var components = URLComponents()
@@ -25,6 +25,11 @@ class API {
     components.host = "gateway.marvel.com"
     components.path = "/v1/public/characters"
     components.queryItems = parameters.map { URLQueryItem(name: $0, value: $1) }
+    
+    if let offset = offset {
+      components.queryItems?.append(URLQueryItem(name: "offset", value: String(offset)))
+    }
+    
     guard let urlString = components.string else { return }
     guard let url = URL(string: urlString) else { return }
     

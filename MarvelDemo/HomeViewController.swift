@@ -3,6 +3,10 @@ import UIKit
 class HomeViewController: UIViewController {
   @IBOutlet var collectionView: UICollectionView!
   var characters: [Character] = []
+  var limit: Int!
+  var offset: Int = 0
+  let api = API()
+  var isLoadingMoreCharacters: Bool = false
   
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -10,13 +14,16 @@ class HomeViewController: UIViewController {
     fetchCharacters()
   }
   
-  func fetchCharacters() {
-    let api = API()
-    api.getCharacters() { (response, error) in
-      guard error == nil else { return }
-      guard let characters = response?.data?.results else { return }
-      self.characters = characters
-      self.collectionView.reloadData()
+  func fetchCharacters(with offset: Int? = nil) {
+    if isLoadingMoreCharacters == false {
+      isLoadingMoreCharacters = true
+      api.getCharacters(with: offset) { (response, error) in
+        guard error == nil else { return }
+        guard let characters = response?.data?.results else { return }
+        self.characters += characters
+        self.collectionView.reloadData()
+        self.isLoadingMoreCharacters = false
+      }
     }
   }
 }
@@ -30,6 +37,15 @@ extension HomeViewController: UICollectionViewDataSource {
     let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath) as! CharacterCollectionViewCell
     cell.setupView(name: characters[indexPath.row].name!, imagePath: (characters[indexPath.row].thumbnail?.imagePath)!)
     return cell
+  }
+}
+
+extension HomeViewController: UICollectionViewDelegate {
+  func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+    if indexPath.row == characters.count - 1 {
+      offset = offset + 20
+      fetchCharacters(with: offset)
+    }
   }
 }
 
