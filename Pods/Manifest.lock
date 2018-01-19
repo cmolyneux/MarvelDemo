@@ -1,0 +1,19 @@
+PODS:
+  - CryptoSwift (0.8.0)
+  - Keys (1.0.0)
+
+DEPENDENCIES:
+  - CryptoSwift
+  - Keys (from `Pods/CocoaPodsKeys`)
+
+EXTERNAL SOURCES:
+  Keys:
+    :path: Pods/CocoaPodsKeys
+
+SPEC CHECKSUMS:
+  CryptoSwift: f81907430ebbe38b8404b4f6fb40f3c576a8755f
+  Keys: 9c35bf00f612ee1d48556f4a4b9b4551e224e90f
+
+PODFILE CHECKSUM: 8c3231711178922ca6ffe28bf4b579bbeef692cf
+
+COCOAPODS: 1.2.1
