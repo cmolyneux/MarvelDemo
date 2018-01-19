@@ -2,10 +2,10 @@ import UIKit
 
 class HomeViewController: UIViewController {
   @IBOutlet var collectionView: UICollectionView!
+  let api = API()
   var characters: [Character] = []
   var limit: Int!
   var offset: Int = 0
-  let api = API()
   var isLoadingMoreCharacters: Bool = false
   
   override func viewDidLoad() {
@@ -17,11 +17,16 @@ class HomeViewController: UIViewController {
   func fetchCharacters(with offset: Int? = nil) {
     if isLoadingMoreCharacters == false {
       isLoadingMoreCharacters = true
-      api.getCharacters(with: offset) { (response, error) in
-        guard error == nil else { return }
-        guard let characters = response?.data?.results else { return }
-        self.characters += characters
-        self.collectionView.reloadData()
+      api.getCharacters(with: offset) { (response) in
+        switch response {
+        case .success(let model):
+          guard let characters = model as? Characters else { return }
+          guard let results = characters.data?.results else { return }
+          self.characters += results
+          self.collectionView.reloadData()
+        case .error(let err):
+          print(err)
+        }
         self.isLoadingMoreCharacters = false
       }
     }
