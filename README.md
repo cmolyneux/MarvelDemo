@@ -1,6 +1,6 @@
 # Marvel Demo iOS Application
 
-Sumamry: 
+**Sumamry**
 
 Demo application differing my TheMovieDatabase demo. 
 Using MVC opposed to MVVM.
@@ -19,5 +19,6 @@ To hash the concatenated string i've used the CrytoSwift framework.
 
 **Pods**
 
-CocoaPod-Keys: https://github.com/orta/cocoapods-keys 
+CocoaPod-Keys: https://github.com/orta/cocoapods-keys
+
 CrytoKeys: https://github.com/krzyzanowskim/CryptoSwift
