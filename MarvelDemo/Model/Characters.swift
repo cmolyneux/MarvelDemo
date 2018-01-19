@@ -28,13 +28,18 @@ struct Character: Decodable {
 }
 
 struct Thumbnail: Decodable {
-  let path: String?
-  let `extension`: String?
+  let path: String
+  let `extension`: String
   
-  enum CodingKeys: String, CodingKey {
-    case path = "path"
-    case `extension` = "fileExtension"
+  var imagePath: String {
+    return "\(path)/landscape_incredible.\(`extension`)"
   }
+  
+//  enum CodingKeys: String, CodingKey {
+//    case path
+//    case `extension` = "fileExtension"
+//    case imagePath
+//  }
 }
 
 struct Comics: Decodable {

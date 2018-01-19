@@ -9,42 +9,61 @@
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="Noteworthy.ttc">
+            <string>Noteworthy-Light</string>
+        </array>
+    </customFonts>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="CharacterCollectionViewCell" customModule="MarvelDemo" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="375" height="126"/>
+            <rect key="frame" x="0.0" y="0.0" width="375" height="146"/>
             <autoresizingMask key="autoresizingMask"/>
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                <rect key="frame" x="0.0" y="0.0" width="375" height="126"/>
+                <rect key="frame" x="0.0" y="0.0" width="375" height="146"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="DQB-cc-3WL">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="126"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="146"/>
                     </imageView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Hh-nf-848">
-                        <rect key="frame" x="20" y="85" width="335" height="21"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                        <nil key="textColor"/>
-                        <nil key="highlightedColor"/>
-                    </label>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2d5-Bf-1J2">
+                        <rect key="frame" x="202" y="104" width="153" height="32"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.69999999999999996" translatesAutoresizingMaskIntoConstraints="NO" id="5Hh-nf-848">
+                                <rect key="frame" x="8" y="16" width="137" height="0.0"/>
+                                <fontDescription key="fontDescription" name="Noteworthy-Light" family="Noteworthy" pointSize="18"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="5Hh-nf-848" firstAttribute="leading" secondItem="2d5-Bf-1J2" secondAttribute="leading" constant="8" id="BXV-Fe-XtV"/>
+                            <constraint firstAttribute="trailing" secondItem="5Hh-nf-848" secondAttribute="trailing" constant="8" id="EmH-U2-1Ts"/>
+                            <constraint firstItem="5Hh-nf-848" firstAttribute="centerX" secondItem="2d5-Bf-1J2" secondAttribute="centerX" id="LBp-sb-OKt"/>
+                            <constraint firstAttribute="width" constant="153" id="ZOe-H0-7ah"/>
+                            <constraint firstAttribute="height" constant="32" id="hi2-3r-C5L"/>
+                            <constraint firstItem="5Hh-nf-848" firstAttribute="centerY" secondItem="2d5-Bf-1J2" secondAttribute="centerY" id="w1R-qa-30E"/>
+                        </constraints>
+                    </view>
                 </subviews>
             </view>
             <constraints>
-                <constraint firstAttribute="trailing" secondItem="5Hh-nf-848" secondAttribute="trailing" constant="20" id="Fwa-27-EPl"/>
-                <constraint firstAttribute="bottom" secondItem="5Hh-nf-848" secondAttribute="bottom" constant="20" id="Ir3-8F-Q8d"/>
-                <constraint firstItem="5Hh-nf-848" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="20" id="JGq-if-LHm"/>
+                <constraint firstAttribute="bottom" secondItem="2d5-Bf-1J2" secondAttribute="bottom" constant="10" id="3nL-9a-MRV"/>
+                <constraint firstAttribute="trailing" secondItem="2d5-Bf-1J2" secondAttribute="trailing" constant="20" id="WDb-7R-644"/>
                 <constraint firstAttribute="bottom" secondItem="DQB-cc-3WL" secondAttribute="bottom" id="ecu-SC-Ele"/>
                 <constraint firstItem="DQB-cc-3WL" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="mve-ri-tCr"/>
                 <constraint firstAttribute="trailing" secondItem="DQB-cc-3WL" secondAttribute="trailing" id="wCT-Aw-xIR"/>
                 <constraint firstItem="DQB-cc-3WL" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="xZy-1o-TN9"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
-            <size key="customSize" width="375" height="126"/>
+            <size key="customSize" width="375" height="146"/>
             <connections>
                 <outlet property="characterNameLabel" destination="5Hh-nf-848" id="GS9-zM-5Xx"/>
+                <outlet property="thumbnailImageview" destination="DQB-cc-3WL" id="UcJ-31-rXU"/>
             </connections>
-            <point key="canvasLocation" x="-26.5" y="90"/>
+            <point key="canvasLocation" x="-26.5" y="100"/>
         </collectionViewCell>
     </objects>
 </document>

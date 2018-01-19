@@ -22,17 +22,19 @@ class HomeViewController: UIViewController {
 }
 
 extension HomeViewController: UICollectionViewDataSource {
-  func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-    let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath) as! CharacterCollectionViewCell
-    cell.setupView(name: characters[indexPath.row].name!)
-    return cell
-  }
-  
   func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
     return characters.count
   }
+  
+  func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+    let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath) as! CharacterCollectionViewCell
+    cell.setupView(name: characters[indexPath.row].name!, imagePath: (characters[indexPath.row].thumbnail?.imagePath)!)
+    return cell
+  }
 }
 
-extension HomeViewController: UICollectionViewDelegate {
-  
+extension HomeViewController: UICollectionViewDelegateFlowLayout {
+  func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout,sizeForItemAt indexPath: IndexPath) -> CGSize {
+    return CGSize(width: view.frame.width, height: 200)
+  }
 }
