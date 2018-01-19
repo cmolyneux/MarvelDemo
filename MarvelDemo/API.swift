@@ -10,12 +10,6 @@ private struct APIConfig {
   static let hash = "\(ts)\(privateKey)\(apikey)".md5()
 }
 
-enum Response {
-  case success(Any)
-  case error(Error)
-}
-
-
 class API {
   var parameters: [String: String] {
     return ["apikey": APIConfig.apikey,
@@ -23,7 +17,7 @@ class API {
             "hash": APIConfig.hash]
   }
   
-  func getCharacters(completion: @escaping (Response) -> Void) {
+  func getCharacters(completion: @escaping (Characters?, Error?) -> Void) {
     let session = URLSession(configuration: .default)
     
     var components = URLComponents()
@@ -36,17 +30,19 @@ class API {
     
     session.dataTask(with: url, completionHandler: {
       (data, response, error) in
-      guard error == nil else { return }
-      guard let data = data else { return }
-      
-      do {
-        let decoder = JSONDecoder()
-        let characters = try decoder.decode(Characters.self, from: data)
-        completion(.success(characters))
-      } catch {
-        print("error converting data to JSON")
-        print(error)
-        completion(.error(error))
+      DispatchQueue.main.async {
+        guard error == nil else { return }
+        guard let data = data else { return }
+        
+        do {
+          let decoder = JSONDecoder()
+          let characters = try decoder.decode(Characters.self, from: data)
+          completion(characters, nil)
+        } catch {
+          print("error converting data to JSON")
+          print(error)
+          completion(nil, error)
+        }
       }
     }).resume()
   }
