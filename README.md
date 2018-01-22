@@ -22,3 +22,9 @@ To hash the concatenated string i've used the CrytoSwift framework.
 CocoaPod-Keys: https://github.com/orta/cocoapods-keys
 
 CrytoKeys: https://github.com/krzyzanowskim/CryptoSwift
+
+**Initial Commit Screenshot** 
+
+<p align="left">
+  <img src="initialscreen.png" width="320"/>
+</p>
