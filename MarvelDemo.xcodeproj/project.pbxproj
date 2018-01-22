@@ -18,6 +18,7 @@
 		12E9E9602012449E0062B05D /* CharacterCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12E9E95E2012449E0062B05D /* CharacterCollectionViewCell.swift */; };
 		12E9E9612012449E0062B05D /* CharacterCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 12E9E95F2012449E0062B05D /* CharacterCollectionViewCell.xib */; };
 		12E9E96420124B510062B05D /* UIImageViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12E9E96320124B510062B05D /* UIImageViewExtension.swift */; };
+		12E9E97620164AF60062B05D /* MarvelCharactersController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12E9E97520164AF60062B05D /* MarvelCharactersController.swift */; };
 		6E757CD2A07D431C20BEF527 /* Pods_MarvelDemoProjectTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DA63422CF7DC778C6CF9AB53 /* Pods_MarvelDemoProjectTests.framework */; };
 		DABDF05205BEF05DF2BAFF79 /* Pods_MarvelDemoTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F6576E7ADB21EF1B193118D8 /* Pods_MarvelDemoTests.framework */; };
 		E8EBEC036EFB740DBE5CBD26 /* Pods_MarvelDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F2D4C3344D653E2787D5376F /* Pods_MarvelDemo.framework */; };
@@ -49,6 +50,7 @@
 		12E9E95E2012449E0062B05D /* CharacterCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterCollectionViewCell.swift; sourceTree = "<group>"; };
 		12E9E95F2012449E0062B05D /* CharacterCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CharacterCollectionViewCell.xib; sourceTree = "<group>"; };
 		12E9E96320124B510062B05D /* UIImageViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageViewExtension.swift; sourceTree = "<group>"; };
+		12E9E97520164AF60062B05D /* MarvelCharactersController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarvelCharactersController.swift; sourceTree = "<group>"; };
 		1BD9BBFD5CE3F66443822BE6 /* Pods-MarvelDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MarvelDemo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MarvelDemo/Pods-MarvelDemo.debug.xcconfig"; sourceTree = "<group>"; };
 		1DB4871E0BAD0081E7313055 /* Pods-MarvelDemoProjectTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MarvelDemoProjectTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-MarvelDemoProjectTests/Pods-MarvelDemoProjectTests.release.xcconfig"; sourceTree = "<group>"; };
 		1F60ABC7D94CDB6195F20196 /* Pods-MarvelDemoTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MarvelDemoTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MarvelDemoTests/Pods-MarvelDemoTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -107,17 +109,11 @@
 		12E9E9392011F52F0062B05D /* MarvelDemo */ = {
 			isa = PBXGroup;
 			children = (
-				12E9E96320124B510062B05D /* UIImageViewExtension.swift */,
-				12E9E962201249270062B05D /* Model */,
 				12E9E93A2011F52F0062B05D /* AppDelegate.swift */,
-				12E9E93C2011F52F0062B05D /* HomeViewController.swift */,
-				12E9E93E2011F52F0062B05D /* Main.storyboard */,
-				12E9E9412011F52F0062B05D /* Assets.xcassets */,
-				12E9E9432011F52F0062B05D /* LaunchScreen.storyboard */,
-				12E9E9462011F52F0062B05D /* Info.plist */,
+				12E9E970201649FC0062B05D /* View */,
+				12E9E962201249270062B05D /* Model */,
+				12E9E97220164A3F0062B05D /* Supporting Files */,
 				12E9E95C2011F9200062B05D /* API.swift */,
-				12E9E95E2012449E0062B05D /* CharacterCollectionViewCell.swift */,
-				12E9E95F2012449E0062B05D /* CharacterCollectionViewCell.xib */,
 			);
 			path = MarvelDemo;
 			sourceTree = "<group>";
@@ -137,6 +133,53 @@
 				12E9E95A2011F55E0062B05D /* Characters.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		12E9E970201649FC0062B05D /* View */ = {
+			isa = PBXGroup;
+			children = (
+				12E9E93E2011F52F0062B05D /* Main.storyboard */,
+				12E9E9432011F52F0062B05D /* LaunchScreen.storyboard */,
+				12E9E97320164A680062B05D /* Cells */,
+				12E9E97120164A060062B05D /* ViewController */,
+				12E9E97420164ADA0062B05D /* Controllers */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		12E9E97120164A060062B05D /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				12E9E93C2011F52F0062B05D /* HomeViewController.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		12E9E97220164A3F0062B05D /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				12E9E9412011F52F0062B05D /* Assets.xcassets */,
+				12E9E96320124B510062B05D /* UIImageViewExtension.swift */,
+				12E9E9462011F52F0062B05D /* Info.plist */,
+			);
+			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		12E9E97320164A680062B05D /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				12E9E95E2012449E0062B05D /* CharacterCollectionViewCell.swift */,
+				12E9E95F2012449E0062B05D /* CharacterCollectionViewCell.xib */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		12E9E97420164ADA0062B05D /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				12E9E97520164AF60062B05D /* MarvelCharactersController.swift */,
+			);
+			path = Controllers;
 			sourceTree = "<group>";
 		};
 		14D994B82A9FEA1451449830 /* Pods */ = {
@@ -372,6 +415,7 @@
 				12E9E93D2011F52F0062B05D /* HomeViewController.swift in Sources */,
 				12E9E96420124B510062B05D /* UIImageViewExtension.swift in Sources */,
 				12E9E95B2011F55E0062B05D /* Characters.swift in Sources */,
+				12E9E97620164AF60062B05D /* MarvelCharactersController.swift in Sources */,
 				12E9E95D2011F9200062B05D /* API.swift in Sources */,
 				12E9E93B2011F52F0062B05D /* AppDelegate.swift in Sources */,
 			);
@@ -529,7 +573,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = D2SMK7HZNU;
-				INFOPLIST_FILE = "$(SRCROOT)/MarvelDemo/Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/MarvelDemo/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = cmolyneux.MarvelDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -545,7 +589,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = D2SMK7HZNU;
-				INFOPLIST_FILE = "$(SRCROOT)/MarvelDemo/Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/MarvelDemo/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = cmolyneux.MarvelDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
