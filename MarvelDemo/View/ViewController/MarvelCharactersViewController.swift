@@ -1,11 +1,14 @@
 import UIKit
 
-class HomeViewController: UIViewController, MarvelCharactersDelegate {
+//TODO:
+//Strip out UICollectionViewDataSource
+//Seperate UI from any business logic
+
+class MarvelCharactersViewController: UIViewController, MarvelCharactersDelegate {
   @IBOutlet var collectionView: UICollectionView!
   var characters: [Character] = []
   var offset: Int = 0
   var marvelCharactersController: MarvelCharactersController!
-  var marvelCharactersHandler: MarvelCharactersHandler!
   
   var state: UIState = .Loading {
     willSet(newState) {
@@ -28,13 +31,14 @@ class HomeViewController: UIViewController, MarvelCharactersDelegate {
   override func viewDidLoad() {
     super.viewDidLoad()
     collectionView.register(UINib(nibName: "CharacterCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "Cell")
-    marvelCharactersController = MarvelCharactersController()
+    let api = API()
+    marvelCharactersController = MarvelCharactersController(api: api)
     marvelCharactersController.delegate = self
     marvelCharactersController.fetchCharacters(with: offset)
   }
 }
 
-extension HomeViewController: UICollectionViewDataSource {
+extension MarvelCharactersViewController: UICollectionViewDataSource {
   func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
     return characters.count
   }
@@ -46,7 +50,7 @@ extension HomeViewController: UICollectionViewDataSource {
   }
 }
 
-extension HomeViewController: UICollectionViewDelegate {
+extension MarvelCharactersViewController: UICollectionViewDelegate {
   func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
     if indexPath.row == characters.count - 1 {
       offset = offset + 20
@@ -55,7 +59,7 @@ extension HomeViewController: UICollectionViewDelegate {
   }
 }
 
-extension HomeViewController: UICollectionViewDelegateFlowLayout {
+extension MarvelCharactersViewController: UICollectionViewDelegateFlowLayout {
   func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout,sizeForItemAt indexPath: IndexPath) -> CGSize {
     return CGSize(width: view.frame.width, height: 200)
   }
