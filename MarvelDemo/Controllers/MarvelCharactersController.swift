@@ -10,15 +10,16 @@ protocol MarvelCharactersDelegate: class {
   var state: UIState { get set }
 }
 
-final class MarvelCharactersController {
-  var delegate: MarvelCharactersDelegate?
+class MarvelCharactersController {
+  weak var delegate: MarvelCharactersDelegate?
   let api: API!
+  var offset = 0
   
   init(api: API) {
     self.api = api
   }
   
-  func fetchCharacters(with offset: Int?) {
+  func fetchCharacters() {
     guard let delegate = delegate else { return }
     delegate.state = .Loading
     
@@ -27,16 +28,11 @@ final class MarvelCharactersController {
       case .success(let model):
         guard let characters = model as? Characters else { return }
         guard let results = characters.data?.results else { return }
+        self.offset += 20
         delegate.state = .Success(results)
       case .error(let error):
         delegate.state = .Failure(error)
       }
     }
   }
-}
-
-//Not using this yet
-protocol MarvelCharactersHandler {
-  var delegate: MarvelCharactersDelegate? { get set }
-  func fetchCharacters(with offset: Int?)
 }

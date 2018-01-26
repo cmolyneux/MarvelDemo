@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		12E5540E201B31F6000F29AD /* MarvelCharactersDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12E5540D201B31F6000F29AD /* MarvelCharactersDataSource.swift */; };
 		12E9E93B2011F52F0062B05D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12E9E93A2011F52F0062B05D /* AppDelegate.swift */; };
 		12E9E93D2011F52F0062B05D /* MarvelCharactersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12E9E93C2011F52F0062B05D /* MarvelCharactersViewController.swift */; };
 		12E9E9402011F52F0062B05D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 12E9E93E2011F52F0062B05D /* Main.storyboard */; };
@@ -35,6 +36,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		12E5540D201B31F6000F29AD /* MarvelCharactersDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarvelCharactersDataSource.swift; sourceTree = "<group>"; };
 		12E9E9372011F52F0062B05D /* MarvelDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MarvelDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		12E9E93A2011F52F0062B05D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		12E9E93C2011F52F0062B05D /* MarvelCharactersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarvelCharactersViewController.swift; sourceTree = "<group>"; };
@@ -110,8 +112,8 @@
 			isa = PBXGroup;
 			children = (
 				12E9E93A2011F52F0062B05D /* AppDelegate.swift */,
-				12E9E97420164ADA0062B05D /* Controllers */,
 				12E9E970201649FC0062B05D /* View */,
+				12E9E97420164ADA0062B05D /* Controllers */,
 				12E9E962201249270062B05D /* Model */,
 				12E9E97220164A3F0062B05D /* Supporting Files */,
 			);
@@ -151,6 +153,7 @@
 			isa = PBXGroup;
 			children = (
 				12E9E93C2011F52F0062B05D /* MarvelCharactersViewController.swift */,
+				12E5540D201B31F6000F29AD /* MarvelCharactersDataSource.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -413,6 +416,7 @@
 			files = (
 				12E9E9602012449E0062B05D /* CharacterCollectionViewCell.swift in Sources */,
 				12E9E93D2011F52F0062B05D /* MarvelCharactersViewController.swift in Sources */,
+				12E5540E201B31F6000F29AD /* MarvelCharactersDataSource.swift in Sources */,
 				12E9E96420124B510062B05D /* UIImageViewExtension.swift in Sources */,
 				12E9E95B2011F55E0062B05D /* Characters.swift in Sources */,
 				12E9E97620164AF60062B05D /* MarvelCharactersController.swift in Sources */,
