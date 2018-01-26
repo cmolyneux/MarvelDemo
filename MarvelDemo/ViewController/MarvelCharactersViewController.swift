@@ -1,6 +1,6 @@
 import UIKit
 
-class MarvelCharactersViewController: UIViewController, MarvelCharactersDelegate {
+class MarvelCharactersViewController: UIViewController, MarvelCharactersDelegate {  
   @IBOutlet var collectionView: UICollectionView!
   let reuseIdentifier = "characterCell"
   var marvelCharactersController: MarvelCharactersController!
@@ -9,18 +9,12 @@ class MarvelCharactersViewController: UIViewController, MarvelCharactersDelegate
     MarvelCharactersDataSource(character: [], reuseIdentifier: reuseIdentifier)
   }()
   
-  var state: UIState = .Loading {
-    willSet(newState) {
-      update(state: newState)
-    }
-  }
-  
   func update(state: UIState) {
     switch state {
     case .Loading:
       print("Loading")
     case .Success(let response):
-      dataSource.character += response
+      dataSource.character += response as! [Character]
       collectionView.reloadData()
     case .Failure(let error):
       print(error)
@@ -45,6 +39,12 @@ extension MarvelCharactersViewController: UICollectionViewDelegate {
     if indexPath.row == dataSource.character.count - 1 {
       marvelCharactersController.fetchCharacters()
     }
+  }
+  
+  func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+    let character = dataSource.character[indexPath.row]
+    let vc = MarvelCharactersDetailViewViewController(name: character.name, summary: character.description, image: character.thumbnail?.imagePath)
+    present(vc, animated: true, completion: nil)
   }
 }
 

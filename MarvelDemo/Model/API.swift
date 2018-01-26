@@ -11,30 +11,31 @@ private struct APIConfig {
 }
 
 enum Response {
-  case success(Any)
+  case success([Any])
   case error(Error)
 }
 
 class API {
+  let session = URLSession(configuration: .default)
   var parameters: [String: String] {
     return ["apikey": APIConfig.apikey,
             "ts": APIConfig.ts,
             "hash": APIConfig.hash]
   }
   
-  func getCharacters(with offset: Int? = nil, completion: @escaping (Response) -> Void) {
-    let session = URLSession(configuration: .default)
-    
+  var baseUrlComponents: URLComponents {
     var components = URLComponents()
     components.scheme = "https"
     components.host = "gateway.marvel.com"
-    components.path = "/v1/public/characters"
     components.queryItems = parameters.map { URLQueryItem(name: $0, value: $1) }
-    
-    if let offset = offset {
-      components.queryItems?.append(URLQueryItem(name: "offset", value: String(offset)))
-    }
-    
+    return components
+  }
+  
+  func getCharacters(with offset: Int, completion: @escaping (Response) -> Void) {
+    var components = baseUrlComponents
+    components.path = "/v1/public/characters"
+    components.queryItems?.append(URLQueryItem(name: "offset", value: String(offset)))
+
     guard let urlString = components.string else { return }
     guard let url = URL(string: urlString) else { return }
     
@@ -47,10 +48,9 @@ class API {
         do {
           let decoder = JSONDecoder()
           let characters = try decoder.decode(Characters.self, from: data)
-          completion(.success(characters))
+          guard let result = characters.data?.results else { return }
+          completion(.success(result))
         } catch {
-          print("error converting data to JSON")
-          print(error)
           completion(.error(error))
         }
       }

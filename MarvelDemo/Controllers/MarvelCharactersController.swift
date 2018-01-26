@@ -2,12 +2,12 @@ import Foundation
 
 enum UIState {
   case Loading
-  case Success([Character])
+  case Success([Any])
   case Failure(Error)
 }
 
 protocol MarvelCharactersDelegate: class {
-  var state: UIState { get set }
+  func update(state: UIState)
 }
 
 class MarvelCharactersController {
@@ -19,19 +19,21 @@ class MarvelCharactersController {
     self.api = api
   }
   
+  var state: UIState = .Loading {
+    didSet {
+      delegate?.update(state: state)
+    }
+  }
+  
   func fetchCharacters() {
-    guard let delegate = delegate else { return }
-    delegate.state = .Loading
-    
+    state = .Loading
     api.getCharacters(with: offset) { response in
       switch response {
-      case .success(let model):
-        guard let characters = model as? Characters else { return }
-        guard let results = characters.data?.results else { return }
+      case .success(let characters):
         self.offset += 20
-        delegate.state = .Success(results)
+        self.state = .Success(characters)
       case .error(let error):
-        delegate.state = .Failure(error)
+        self.state = .Failure(error)
       }
     }
   }
