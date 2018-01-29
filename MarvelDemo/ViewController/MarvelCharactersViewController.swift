@@ -43,7 +43,7 @@ extension MarvelCharactersViewController: UICollectionViewDelegate {
   
   func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
     let character = dataSource.character[indexPath.row]
-    let vc = MarvelCharactersDetailViewViewController(name: character.name, summary: character.description, image: character.thumbnail?.imagePath)
+    let vc = MarvelCharacterDetailViewController(character: character)
     present(vc, animated: true, completion: nil)
   }
 }
