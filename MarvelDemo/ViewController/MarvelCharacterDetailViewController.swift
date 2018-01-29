@@ -5,7 +5,7 @@ class MarvelCharacterDetailViewController: UIViewController {
   @IBOutlet weak var nameLabel: UILabel!
   @IBOutlet weak var summaryLabel: UILabel!
   
-  private let character: Character
+  private let character: Character!
   
   init(character: Character) {
     self.character = character
@@ -19,6 +19,13 @@ class MarvelCharacterDetailViewController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     setupView()
+    let backButton = UIBarButtonItem(barButtonSystemItem: .rewind, target: self, action: #selector(closeView))
+    backButton.tintColor = .white
+    navigationItem.setLeftBarButton(backButton, animated: false)
+  }
+  
+  @objc func closeView() {
+    navigationController?.popViewController(animated: true)
   }
   
   func setupView() {
