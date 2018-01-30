@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -13,34 +14,55 @@
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="MarvelCharactersViewController" customModule="MarvelDemo" customModuleProvider="target" sceneMemberID="viewController">
-                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="6iP-A3-m6G">
+                    <view key="view" contentMode="scaleToFill" id="P3r-Ui-9t2">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="igG-UK-LaJ">
+                                <rect key="frame" x="0.0" y="120" width="375" height="547"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" sectionInsetReference="safeArea" id="tsg-0E-14P">
+                                    <size key="itemSize" width="375" height="170"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="" id="AHg-gL-IhT" customClass="CharacterCollectionViewCell" customModule="MarvelDemo" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="170"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="170"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </view>
+                                    </collectionViewCell>
+                                </cells>
+                                <connections>
+                                    <outlet property="dataSource" destination="BYZ-38-t0r" id="Yvb-1g-KXu"/>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="jyP-zg-IQ3"/>
+                                </connections>
+                            </collectionView>
+                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="gON-JH-0E4">
+                                <rect key="frame" x="0.0" y="64" width="375" height="56"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </searchBar>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="6ym-hj-HY4">
-                            <size key="itemSize" width="375" height="150"/>
-                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
-                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                        </collectionViewFlowLayout>
-                        <cells>
-                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="cell" id="FXg-Fg-VNv" customClass="CharacterCollectionViewCell" customModule="MarvelDemo" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="150"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="150"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                </view>
-                            </collectionViewCell>
-                        </cells>
-                        <connections>
-                            <outlet property="dataSource" destination="BYZ-38-t0r" id="vH1-Lv-BCj"/>
-                            <outlet property="delegate" destination="BYZ-38-t0r" id="fEb-H7-ADk"/>
-                        </connections>
-                    </collectionView>
+                        <constraints>
+                            <constraint firstItem="igG-UK-LaJ" firstAttribute="leading" secondItem="gON-JH-0E4" secondAttribute="leading" id="2Oi-Tt-NH9"/>
+                            <constraint firstItem="XCY-oy-hxI" firstAttribute="bottom" secondItem="igG-UK-LaJ" secondAttribute="bottom" id="Tw3-Ni-Uff"/>
+                            <constraint firstItem="gON-JH-0E4" firstAttribute="top" secondItem="XCY-oy-hxI" secondAttribute="top" id="diJ-Nw-lWX"/>
+                            <constraint firstItem="igG-UK-LaJ" firstAttribute="trailing" secondItem="gON-JH-0E4" secondAttribute="trailing" id="hLG-bk-wr7"/>
+                            <constraint firstItem="gON-JH-0E4" firstAttribute="leading" secondItem="XCY-oy-hxI" secondAttribute="leading" id="rgS-78-wHq"/>
+                            <constraint firstItem="gON-JH-0E4" firstAttribute="trailing" secondItem="XCY-oy-hxI" secondAttribute="trailing" id="wRP-AX-HH2"/>
+                            <constraint firstItem="igG-UK-LaJ" firstAttribute="top" secondItem="gON-JH-0E4" secondAttribute="bottom" id="x5W-O1-oXl"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="XCY-oy-hxI"/>
+                    </view>
                     <navigationItem key="navigationItem" title="MARVEL" id="F7c-3j-fbz"/>
                     <connections>
-                        <outlet property="collectionView" destination="6iP-A3-m6G" id="VNF-3k-9vp"/>
+                        <outlet property="characterSearchBar" destination="gON-JH-0E4" id="6kz-H0-0GD"/>
+                        <outlet property="collectionView" destination="igG-UK-LaJ" id="XSw-0E-Y7u"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

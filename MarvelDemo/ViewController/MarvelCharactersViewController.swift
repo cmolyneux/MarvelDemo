@@ -1,7 +1,9 @@
 import UIKit
 
 class MarvelCharactersViewController: UIViewController, MarvelCharactersDelegate {  
+  @IBOutlet weak var characterSearchBar: UISearchBar!
   @IBOutlet var collectionView: UICollectionView!
+
   let reuseIdentifier = "characterCell"
   var marvelCharactersController: MarvelCharactersController!
   
@@ -25,12 +27,16 @@ class MarvelCharactersViewController: UIViewController, MarvelCharactersDelegate
     super.viewDidLoad()
     let session = URLSession(configuration: .default)
     let httpClient = HttpClient(session: session)
-    collectionView.register(UINib(nibName: "CharacterCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: reuseIdentifier)
-    collectionView.dataSource = dataSource
+
     marvelCharactersController = MarvelCharactersController(httpClient: httpClient)
     marvelCharactersController.delegate = self
     marvelCharactersController.fetchCharacters()
+    setupCollectionView()
+  }
 
+  func setupCollectionView() {
+    collectionView.register(UINib(nibName: "CharacterCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: reuseIdentifier)
+    collectionView.layoutMargins = .zero
     collectionView.dataSource = dataSource
   }
 }
@@ -46,11 +52,5 @@ extension MarvelCharactersViewController: UICollectionViewDelegate {
     let character = dataSource.character[indexPath.row]
     let vc = MarvelCharacterDetailViewController(character: character)
     navigationController?.pushViewController(vc, animated: true)
-  }
-}
-
-extension MarvelCharactersViewController: UICollectionViewDelegateFlowLayout {
-  func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout,sizeForItemAt indexPath: IndexPath) -> CGSize {
-    return CGSize(width: view.frame.width, height: 200)
   }
 }
