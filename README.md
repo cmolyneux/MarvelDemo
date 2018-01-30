@@ -11,7 +11,9 @@ Using Cocoapods
 The Marvel Developer guide requests API keys (understandably) be kept private. 
 To generate your own API Keys register at: https://developer.marvel.com/ 
 I've used CocoaPod-Keys to store the keys inside keychain. 
-On pod install you'll be requested to enter your own keys.
+
+- gem install cocoapods-keys
+- pod install (you'll be requested to enter your own keys.)
 
 The Marvel API requires we send a hash as part of the authorisation.
 "hash - a md5 digest of the ts parameter, your private key and your public key (e.g. md5(ts+privateKey+publicKey)"
