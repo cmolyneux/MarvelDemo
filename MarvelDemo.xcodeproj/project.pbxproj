@@ -10,6 +10,7 @@
 		124E3575201B8ADA00B55416 /* MarvelCharacterDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 124E3573201B8ADA00B55416 /* MarvelCharacterDetailViewController.swift */; };
 		124E3576201B8ADA00B55416 /* MarvelCharacterDetailView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 124E3574201B8ADA00B55416 /* MarvelCharacterDetailView.xib */; };
 		124E357A201B8CF400B55416 /* MarvelColorPalette.swift in Sources */ = {isa = PBXBuildFile; fileRef = 124E3579201B8CF400B55416 /* MarvelColorPalette.swift */; };
+		1265C9E42020BDAD00AABF6E /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 12E9E9512011F52F0062B05D /* Info.plist */; };
 		12E5540E201B31F6000F29AD /* MarvelCharactersDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12E5540D201B31F6000F29AD /* MarvelCharactersDataSource.swift */; };
 		12E9E93B2011F52F0062B05D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12E9E93A2011F52F0062B05D /* AppDelegate.swift */; };
 		12E9E93D2011F52F0062B05D /* MarvelCharactersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12E9E93C2011F52F0062B05D /* MarvelCharactersViewController.swift */; };
@@ -18,7 +19,7 @@
 		12E9E9452011F52F0062B05D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 12E9E9432011F52F0062B05D /* LaunchScreen.storyboard */; };
 		12E9E9502011F52F0062B05D /* MarvelDemoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12E9E94F2011F52F0062B05D /* MarvelDemoTests.swift */; };
 		12E9E95B2011F55E0062B05D /* Characters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12E9E95A2011F55E0062B05D /* Characters.swift */; };
-		12E9E95D2011F9200062B05D /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12E9E95C2011F9200062B05D /* API.swift */; };
+		12E9E95D2011F9200062B05D /* HttpClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12E9E95C2011F9200062B05D /* HttpClient.swift */; };
 		12E9E9602012449E0062B05D /* CharacterCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12E9E95E2012449E0062B05D /* CharacterCollectionViewCell.swift */; };
 		12E9E9612012449E0062B05D /* CharacterCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 12E9E95F2012449E0062B05D /* CharacterCollectionViewCell.xib */; };
 		12E9E96420124B510062B05D /* UIImageViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12E9E96320124B510062B05D /* UIImageViewExtension.swift */; };
@@ -54,7 +55,7 @@
 		12E9E94F2011F52F0062B05D /* MarvelDemoTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarvelDemoTests.swift; sourceTree = "<group>"; };
 		12E9E9512011F52F0062B05D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		12E9E95A2011F55E0062B05D /* Characters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Characters.swift; sourceTree = "<group>"; };
-		12E9E95C2011F9200062B05D /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
+		12E9E95C2011F9200062B05D /* HttpClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HttpClient.swift; sourceTree = "<group>"; };
 		12E9E95E2012449E0062B05D /* CharacterCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterCollectionViewCell.swift; sourceTree = "<group>"; };
 		12E9E95F2012449E0062B05D /* CharacterCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CharacterCollectionViewCell.xib; sourceTree = "<group>"; };
 		12E9E96320124B510062B05D /* UIImageViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageViewExtension.swift; sourceTree = "<group>"; };
@@ -139,7 +140,7 @@
 		12E9E962201249270062B05D /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				12E9E95C2011F9200062B05D /* API.swift */,
+				12E9E95C2011F9200062B05D /* HttpClient.swift */,
 				12E9E95A2011F55E0062B05D /* Characters.swift */,
 			);
 			path = Model;
@@ -321,6 +322,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1265C9E42020BDAD00AABF6E /* Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -432,7 +434,7 @@
 				12E9E96420124B510062B05D /* UIImageViewExtension.swift in Sources */,
 				12E9E95B2011F55E0062B05D /* Characters.swift in Sources */,
 				12E9E97620164AF60062B05D /* MarvelCharactersController.swift in Sources */,
-				12E9E95D2011F9200062B05D /* API.swift in Sources */,
+				12E9E95D2011F9200062B05D /* HttpClient.swift in Sources */,
 				12E9E93B2011F52F0062B05D /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -622,9 +624,9 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 2RB73B53VE;
-				INFOPLIST_FILE = MarvelDemoProjectTests/Info.plist;
+				INFOPLIST_FILE = MarvelDemoTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = cmolyneux.MarvelDemoProjectTests;
+				PRODUCT_BUNDLE_IDENTIFIER = cmolyneux.MarvelDemoTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -640,9 +642,9 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 2RB73B53VE;
-				INFOPLIST_FILE = MarvelDemoProjectTests/Info.plist;
+				INFOPLIST_FILE = MarvelDemoTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = cmolyneux.MarvelDemoProjectTests;
+				PRODUCT_BUNDLE_IDENTIFIER = cmolyneux.MarvelDemoTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

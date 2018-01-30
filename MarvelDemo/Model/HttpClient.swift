@@ -2,6 +2,7 @@ import Foundation
 import CryptoSwift
 import Keys
 
+
 private struct APIConfig {
   private static let keys = MarvelKeys()
   static let privateKey = keys.marvelPrivateKey
@@ -15,24 +16,29 @@ enum Response {
   case error(Error)
 }
 
-class API {
-  let session = URLSession(configuration: .default)
-  var parameters: [String: String] {
+class HttpClient {
+   let session: URLSession
+
+  var authParameters: [String: String] {
     return ["apikey": APIConfig.apikey,
             "ts": APIConfig.ts,
             "hash": APIConfig.hash]
   }
+
+  init(session: URLSession) {
+    self.session = session
+  }
   
-  var baseUrlComponents: URLComponents {
+  var baseUrlWithAuthorisation: URLComponents {
     var components = URLComponents()
     components.scheme = "https"
     components.host = "gateway.marvel.com"
-    components.queryItems = parameters.map { URLQueryItem(name: $0, value: $1) }
+    components.queryItems = authParameters.map { URLQueryItem(name: $0, value: $1) }
     return components
   }
-  
+
   func getCharacters(with offset: Int, completion: @escaping (Response) -> Void) {
-    var components = baseUrlComponents
+    var components = baseUrlWithAuthorisation
     components.path = "/v1/public/characters"
     components.queryItems?.append(URLQueryItem(name: "offset", value: String(offset)))
 

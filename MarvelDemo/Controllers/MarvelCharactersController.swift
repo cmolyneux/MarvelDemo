@@ -12,11 +12,11 @@ protocol MarvelCharactersDelegate: class {
 
 class MarvelCharactersController {
   weak var delegate: MarvelCharactersDelegate?
-  let api: API!
+  let httpClient: HttpClient!
   var offset = 0
   
-  init(api: API) {
-    self.api = api
+  init(httpClient: HttpClient) {
+    self.httpClient = httpClient
   }
   
   var state: UIState = .Loading {
@@ -27,7 +27,7 @@ class MarvelCharactersController {
   
   func fetchCharacters() {
     state = .Loading
-    api.getCharacters(with: offset) { response in
+    httpClient.getCharacters(with: offset) { response in
       switch response {
       case .success(let characters):
         self.offset += 20

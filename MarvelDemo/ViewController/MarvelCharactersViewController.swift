@@ -23,10 +23,11 @@ class MarvelCharactersViewController: UIViewController, MarvelCharactersDelegate
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    let api = API()
+    let session = URLSession(configuration: .default)
+    let httpClient = HttpClient(session: session)
     collectionView.register(UINib(nibName: "CharacterCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: reuseIdentifier)
     collectionView.dataSource = dataSource
-    marvelCharactersController = MarvelCharactersController(api: api)
+    marvelCharactersController = MarvelCharactersController(httpClient: httpClient)
     marvelCharactersController.delegate = self
     marvelCharactersController.fetchCharacters()
 
