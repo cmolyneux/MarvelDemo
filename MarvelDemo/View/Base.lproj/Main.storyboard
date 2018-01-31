@@ -44,6 +44,7 @@
                             </collectionView>
                             <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="gON-JH-0E4">
                                 <rect key="frame" x="0.0" y="64" width="375" height="56"/>
+                                <color key="barTintColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <textInputTraits key="textInputTraits"/>
                             </searchBar>
                         </subviews>
@@ -61,7 +62,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="MARVEL" id="F7c-3j-fbz"/>
                     <connections>
-                        <outlet property="characterSearchBar" destination="gON-JH-0E4" id="6kz-H0-0GD"/>
+                        <outlet property="characterSearchBar" destination="gON-JH-0E4" id="loO-81-3il"/>
                         <outlet property="collectionView" destination="igG-UK-LaJ" id="XSw-0E-Y7u"/>
                     </connections>
                 </viewController>

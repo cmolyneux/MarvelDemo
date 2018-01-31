@@ -1,10 +1,13 @@
 import UIKit
 
-class MarvelCharactersViewController: UIViewController, MarvelCharactersDelegate {  
-  @IBOutlet weak var characterSearchBar: UISearchBar!
+class MarvelCharactersViewController: UIViewController, UISearchBarDelegate, MarvelCharactersDelegate {
   @IBOutlet var collectionView: UICollectionView!
-
-  let reuseIdentifier = "characterCell"
+  @IBOutlet weak var characterSearchBar: UISearchBar!
+  
+  var characterSearchService: CharacterSearchService!
+  var httpClient: HttpClient!
+  
+  private let reuseIdentifier = "characterCell"
   var marvelCharactersController: MarvelCharactersController!
   
   lazy var dataSource: MarvelCharactersDataSource = {
@@ -26,11 +29,13 @@ class MarvelCharactersViewController: UIViewController, MarvelCharactersDelegate
   override func viewDidLoad() {
     super.viewDidLoad()
     let session = URLSession(configuration: .default)
-    let httpClient = HttpClient(session: session)
-
+    httpClient = HttpClient(session: session)
+    characterSearchService = CharacterSearchService(api: httpClient)
+    
     marvelCharactersController = MarvelCharactersController(httpClient: httpClient)
     marvelCharactersController.delegate = self
     marvelCharactersController.fetchCharacters()
+    characterSearchBar.delegate = self
     setupCollectionView()
   }
 
@@ -38,6 +43,19 @@ class MarvelCharactersViewController: UIViewController, MarvelCharactersDelegate
     collectionView.register(UINib(nibName: "CharacterCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: reuseIdentifier)
     collectionView.layoutMargins = .zero
     collectionView.dataSource = dataSource
+  }
+  
+  func searchForItem(_ searchString: String) {
+    characterSearchService.searchForCharactersWhereNameStartsWith(searchString) { result in
+      self.dataSource.character = result
+      self.collectionView.reloadData()
+    }
+  }
+  
+  func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+    if searchText.count > 3 {
+      searchForItem(searchText)
+    }
   }
 }
 

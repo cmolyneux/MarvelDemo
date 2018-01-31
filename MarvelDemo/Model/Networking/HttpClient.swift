@@ -17,14 +17,14 @@ enum Response {
 }
 
 class HttpClient {
-   let session: URLSession
-
+  let session: URLSession
+  
   var authParameters: [String: String] {
     return ["apikey": APIConfig.apikey,
             "ts": APIConfig.ts,
             "hash": APIConfig.hash]
   }
-
+  
   init(session: URLSession) {
     self.session = session
   }
@@ -36,11 +36,12 @@ class HttpClient {
     components.queryItems = authParameters.map { URLQueryItem(name: $0, value: $1) }
     return components
   }
-
-  func getCharacters(with offset: Int, completion: @escaping (Response) -> Void) {
+  
+  //todo: make parameters an array - return data
+  func load(path: String, parameters: URLQueryItem, completion: @escaping (Response) -> Void) {
     var components = baseUrlWithAuthorisation
-    components.path = "/v1/public/characters"
-    components.queryItems?.append(URLQueryItem(name: "offset", value: String(offset)))
+    components.path = path
+    components.queryItems?.append(parameters)
 
     guard let urlString = components.string else { return }
     guard let url = URL(string: urlString) else { return }
@@ -62,5 +63,4 @@ class HttpClient {
       }
     }).resume()
   }
-  
 }
