@@ -28,5 +28,5 @@ CrytoKeys: https://github.com/krzyzanowskim/CryptoSwift
 **Initial Commit Screenshot** 
 
 <p align="left">
-  <img src="initialscreen.png" width="320"/>
+  <img src="homescreen.png" width="320"/>
 </p>
