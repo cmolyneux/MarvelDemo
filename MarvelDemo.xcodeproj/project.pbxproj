@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1204CB962027AFAA006ACC3B /* CollectionViewCellExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1204CB952027AFAA006ACC3B /* CollectionViewCellExtension.swift */; };
 		122F530F2022349100D1823C /* SearchService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 122F530E2022349100D1823C /* SearchService.swift */; };
 		122F53122022368000D1823C /* CharacterService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 122F53112022368000D1823C /* CharacterService.swift */; };
 		124E3575201B8ADA00B55416 /* MarvelCharacterDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 124E3573201B8ADA00B55416 /* MarvelCharacterDetailViewController.swift */; };
@@ -42,6 +43,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1204CB952027AFAA006ACC3B /* CollectionViewCellExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewCellExtension.swift; sourceTree = "<group>"; };
 		122F530E2022349100D1823C /* SearchService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchService.swift; sourceTree = "<group>"; };
 		122F53112022368000D1823C /* CharacterService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterService.swift; sourceTree = "<group>"; };
 		124E3573201B8ADA00B55416 /* MarvelCharacterDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarvelCharacterDetailViewController.swift; sourceTree = "<group>"; };
@@ -194,6 +196,7 @@
 		12E9E97320164A680062B05D /* Cells */ = {
 			isa = PBXGroup;
 			children = (
+				1204CB952027AFAA006ACC3B /* CollectionViewCellExtension.swift */,
 				12E9E95E2012449E0062B05D /* CharacterCollectionViewCell.swift */,
 				12E9E95F2012449E0062B05D /* CharacterCollectionViewCell.xib */,
 			);
@@ -442,6 +445,7 @@
 			files = (
 				122F530F2022349100D1823C /* SearchService.swift in Sources */,
 				124E357A201B8CF400B55416 /* MarvelColorPalette.swift in Sources */,
+				1204CB962027AFAA006ACC3B /* CollectionViewCellExtension.swift in Sources */,
 				12E9E9602012449E0062B05D /* CharacterCollectionViewCell.swift in Sources */,
 				122F53122022368000D1823C /* CharacterService.swift in Sources */,
 				12E9E93D2011F52F0062B05D /* MarvelCharactersViewController.swift in Sources */,

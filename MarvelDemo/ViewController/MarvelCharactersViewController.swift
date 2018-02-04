@@ -4,20 +4,18 @@ class MarvelCharactersViewController: UIViewController, UISearchBarDelegate, Mar
   @IBOutlet var collectionView: UICollectionView!
   @IBOutlet weak var characterSearchBar: UISearchBar!
   
-  private let reuseIdentifier = "characterCell"
   var marvelCharactersController: MarvelCharactersController!
-  var searchService: SearchService!
 
   lazy var dataSource: MarvelCharactersDataSource = {
-    MarvelCharactersDataSource(character: [], reuseIdentifier: reuseIdentifier)
+    MarvelCharactersDataSource(character: [])
   }()
   
-  func update(state: UIState) {
+  func update(state: State) {
     switch state {
     case .Loading:
       print("Loading")
     case .Success(let response):
-      dataSource.character += response as! [Character]
+      dataSource.character = response as! [Character]
       collectionView.reloadData()
     case .Failure(let error):
       print(error)
@@ -27,7 +25,6 @@ class MarvelCharactersViewController: UIViewController, UISearchBarDelegate, Mar
   override func viewDidLoad() {
     super.viewDidLoad()
     let session = URLSession(configuration: .default)
-    searchService = SearchService(session: session)
     marvelCharactersController = MarvelCharactersController(session: session)
     marvelCharactersController.delegate = self
     marvelCharactersController.fetchCharacters()
@@ -36,20 +33,16 @@ class MarvelCharactersViewController: UIViewController, UISearchBarDelegate, Mar
   }
 
   func setupCollectionView() {
-    collectionView.register(UINib(nibName: "CharacterCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: reuseIdentifier)
-    collectionView.layoutMargins = .zero
+    collectionView.register(CharacterCollectionViewCell.nib, forCellWithReuseIdentifier: CharacterCollectionViewCell.identifier)
+    collectionView.dataSource = dataSource
     let flowLayout = UICollectionViewFlowLayout()
     flowLayout.itemSize = CGSize(width: UIScreen.main.bounds.width, height: 200)
     flowLayout.minimumLineSpacing = 0
     collectionView.collectionViewLayout = flowLayout
-    collectionView.dataSource = dataSource
   }
   
   func searchForItem(_ searchString: String) {
-    searchService.searchForCharactersWhereNameStartsWith(searchString) { result in
-      self.dataSource.character = result
-      self.collectionView.reloadData()
-    }
+    marvelCharactersController.requestCharacters(named: searchString)
   }
   
   func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {

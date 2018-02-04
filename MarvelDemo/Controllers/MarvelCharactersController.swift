@@ -1,28 +1,42 @@
 import Foundation
 
-enum UIState {
+enum State {
   case Loading
   case Success([Any])
   case Failure(Error)
 }
 
 protocol MarvelCharactersDelegate: class {
-  func update(state: UIState)
+  func update(state: State)
 }
 
 class MarvelCharactersController {
   weak var delegate: MarvelCharactersDelegate?
   let characterService: CharacterService!
+  let searchService: SearchService!
   
-  var offset = 0 //add limit to check whether any more characters to load
+  var offset = 0
+  //TODO: add limit to check whether any more characters to load
   
   init(session: URLSession) {
     self.characterService = CharacterService(session: session)
+    self.searchService = SearchService(session: session)
   }
   
-  var state: UIState = .Loading {
+  var state: State = .Loading {
     didSet {
       delegate?.update(state: state)
+    }
+  }
+  
+  func requestCharacters(named searchTerm: String) {
+    searchService.searchForCharactersWhereNameStartsWith(searchTerm) { response in
+      switch response {
+      case .success(let characters):
+        self.state = .Success(characters)
+      case .error(let error):
+        self.state = .Failure(error)
+      }
     }
   }
   

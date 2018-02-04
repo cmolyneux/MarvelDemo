@@ -37,7 +37,7 @@ class HttpClient {
     return components
   }
   
-  //todo: make parameters an array - return data
+  //WIP 
   func load(path: String, parameters: URLQueryItem, completion: @escaping (Response) -> Void) {
     var components = baseUrlWithAuthorisation
     components.path = path
