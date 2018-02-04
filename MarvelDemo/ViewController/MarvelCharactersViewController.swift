@@ -4,12 +4,10 @@ class MarvelCharactersViewController: UIViewController, UISearchBarDelegate, Mar
   @IBOutlet var collectionView: UICollectionView!
   @IBOutlet weak var characterSearchBar: UISearchBar!
   
-  var characterSearchService: CharacterSearchService!
-  var httpClient: HttpClient!
-  
   private let reuseIdentifier = "characterCell"
   var marvelCharactersController: MarvelCharactersController!
-  
+  var searchService: SearchService!
+
   lazy var dataSource: MarvelCharactersDataSource = {
     MarvelCharactersDataSource(character: [], reuseIdentifier: reuseIdentifier)
   }()
@@ -29,10 +27,8 @@ class MarvelCharactersViewController: UIViewController, UISearchBarDelegate, Mar
   override func viewDidLoad() {
     super.viewDidLoad()
     let session = URLSession(configuration: .default)
-    httpClient = HttpClient(session: session)
-    characterSearchService = CharacterSearchService(api: httpClient)
-    
-    marvelCharactersController = MarvelCharactersController(httpClient: httpClient)
+    searchService = SearchService(session: session)
+    marvelCharactersController = MarvelCharactersController(session: session)
     marvelCharactersController.delegate = self
     marvelCharactersController.fetchCharacters()
     characterSearchBar.delegate = self
@@ -42,11 +38,15 @@ class MarvelCharactersViewController: UIViewController, UISearchBarDelegate, Mar
   func setupCollectionView() {
     collectionView.register(UINib(nibName: "CharacterCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: reuseIdentifier)
     collectionView.layoutMargins = .zero
+    let flowLayout = UICollectionViewFlowLayout()
+    flowLayout.itemSize = CGSize(width: UIScreen.main.bounds.width, height: 200)
+    flowLayout.minimumLineSpacing = 0
+    collectionView.collectionViewLayout = flowLayout
     collectionView.dataSource = dataSource
   }
   
   func searchForItem(_ searchString: String) {
-    characterSearchService.searchForCharactersWhereNameStartsWith(searchString) { result in
+    searchService.searchForCharactersWhereNameStartsWith(searchString) { result in
       self.dataSource.character = result
       self.collectionView.reloadData()
     }

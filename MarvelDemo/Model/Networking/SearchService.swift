@@ -1,10 +1,10 @@
 import Foundation
 
-class CharacterSearchService {
+class SearchService {
   let api: HttpClient!
   
-  init(api: HttpClient) {
-    self.api = HttpClient(session: URLSession(configuration: .default))
+  init(session: URLSession) {
+    self.api = HttpClient(session: session)
   }
   
   enum SearchPaths: String {

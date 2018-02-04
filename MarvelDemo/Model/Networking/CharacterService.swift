@@ -4,8 +4,8 @@ class CharacterService {
   private let characterServicePath = "/v1/public/characters"
   let api: HttpClient!
   
-  init(api: HttpClient) {
-    self.api = HttpClient(session: URLSession(configuration: .default))
+  init(session: URLSession) {
+    self.api = HttpClient(session: session)
   }
   
   func getCharacters(with offset: Int, completion: @escaping (Response) -> Void) {

@@ -12,14 +12,12 @@ protocol MarvelCharactersDelegate: class {
 
 class MarvelCharactersController {
   weak var delegate: MarvelCharactersDelegate?
-  let httpClient: HttpClient!
   let characterService: CharacterService!
   
-  var offset = 0
+  var offset = 0 //add limit to check whether any more characters to load
   
-  init(httpClient: HttpClient) {
-    self.httpClient = httpClient
-    self.characterService = CharacterService(api: httpClient)
+  init(session: URLSession) {
+    self.characterService = CharacterService(session: session)
   }
   
   var state: UIState = .Loading {
