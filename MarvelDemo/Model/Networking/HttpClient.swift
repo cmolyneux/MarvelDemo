@@ -2,7 +2,6 @@ import Foundation
 import CryptoSwift
 import Keys
 
-
 private struct APIConfig {
   private static let keys = MarvelKeys()
   static let privateKey = keys.marvelPrivateKey
@@ -46,21 +45,20 @@ class HttpClient {
     guard let urlString = components.string else { return }
     guard let url = URL(string: urlString) else { return }
     
-    session.dataTask(with: url, completionHandler: {
+    session.dataTask(with: url) {
       (data, response, error) in
       DispatchQueue.main.async {
         guard error == nil else { return }
         guard let data = data else { return }
         
         do {
-          let decoder = JSONDecoder()
-          let characters = try decoder.decode(Characters.self, from: data)
+          let characters = try JSONDecoder().decode(Characters.self, from: data)
           guard let result = characters.data?.results else { return }
           completion(.success(result))
         } catch {
           completion(.error(error))
         }
       }
-    }).resume()
+    }.resume()
   }
 }

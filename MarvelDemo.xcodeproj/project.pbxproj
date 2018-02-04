@@ -101,6 +101,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1204CB972027B6E6006ACC3B /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				12E9E96320124B510062B05D /* UIImageViewExtension.swift */,
+				1204CB952027AFAA006ACC3B /* CollectionViewCellExtension.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		122F53102022349700D1823C /* Networking */ = {
 			isa = PBXGroup;
 			children = (
@@ -156,8 +165,8 @@
 		12E9E962201249270062B05D /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				12E9E95A2011F55E0062B05D /* Characters.swift */,
 				122F53102022349700D1823C /* Networking */,
+				12E9E95A2011F55E0062B05D /* Characters.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -167,6 +176,7 @@
 			children = (
 				12E9E93E2011F52F0062B05D /* CharacterList.storyboard */,
 				124E3574201B8ADA00B55416 /* MarvelCharacterDetailView.xib */,
+				1204CB972027B6E6006ACC3B /* Extensions */,
 				12E9E97320164A680062B05D /* Cells */,
 			);
 			path = View;
@@ -186,7 +196,6 @@
 			children = (
 				12E9E9432011F52F0062B05D /* LaunchScreen.storyboard */,
 				12E9E9412011F52F0062B05D /* Assets.xcassets */,
-				12E9E96320124B510062B05D /* UIImageViewExtension.swift */,
 				12E9E9462011F52F0062B05D /* Info.plist */,
 				124E3579201B8CF400B55416 /* MarvelColorPalette.swift */,
 			);
@@ -196,7 +205,6 @@
 		12E9E97320164A680062B05D /* Cells */ = {
 			isa = PBXGroup;
 			children = (
-				1204CB952027AFAA006ACC3B /* CollectionViewCellExtension.swift */,
 				12E9E95E2012449E0062B05D /* CharacterCollectionViewCell.swift */,
 				12E9E95F2012449E0062B05D /* CharacterCollectionViewCell.xib */,
 			);
