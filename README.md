@@ -3,8 +3,8 @@
 **Sumamry**
 
 Demo application differing my TheMovieDatabase demo. 
-Using MVC opposed to MVVM.
-Using Cocoapods 
+Following a MVC design pattern (Previous project MVVM).
+Using CocoaPods
 
 **Setup and Pods used**
 
@@ -24,6 +24,8 @@ To hash the concatenated string i've used the CrytoSwift framework.
 CocoaPod-Keys: https://github.com/orta/cocoapods-keys
 
 CrytoKeys: https://github.com/krzyzanowskim/CryptoSwift
+
+Alamofire: https://github.com/Alamofire/AlamofireImage (Mainly using AlamofireImage)
 
 **Initial Commit Screenshot** 
 

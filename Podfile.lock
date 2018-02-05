@@ -1,8 +1,13 @@
 PODS:
+  - Alamofire (4.6.0)
+  - AlamofireImage (3.3.0):
+    - Alamofire (~> 4.5)
   - CryptoSwift (0.8.0)
   - Keys (1.0.0)
 
 DEPENDENCIES:
+  - Alamofire
+  - AlamofireImage
   - CryptoSwift
   - Keys (from `Pods/CocoaPodsKeys`)
 
@@ -11,9 +16,11 @@ EXTERNAL SOURCES:
     :path: Pods/CocoaPodsKeys
 
 SPEC CHECKSUMS:
+  Alamofire: f41a599bd63041760b26d393ec1069d9d7b917f4
+  AlamofireImage: 2e784dc5d00f04903a52c1d169181469c805c3df
   CryptoSwift: f81907430ebbe38b8404b4f6fb40f3c576a8755f
   Keys: 9c35bf00f612ee1d48556f4a4b9b4551e224e90f
 
-PODFILE CHECKSUM: 8c3231711178922ca6ffe28bf4b579bbeef692cf
+PODFILE CHECKSUM: b61294193f9282ff107124ef1715c32b7179d298
 
 COCOAPODS: 1.2.1

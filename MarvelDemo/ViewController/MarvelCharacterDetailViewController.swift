@@ -1,4 +1,5 @@
 import UIKit
+import AlamofireImage
 
 class MarvelCharacterDetailViewController: UIViewController {
   @IBOutlet weak var headerImageView: UIImageView!
@@ -19,6 +20,7 @@ class MarvelCharacterDetailViewController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     setupView()
+    title = character.name
     let backButton = UIBarButtonItem(barButtonSystemItem: .rewind, target: self, action: #selector(closeView))
     backButton.tintColor = .white
     navigationItem.setLeftBarButton(backButton, animated: false)
@@ -32,7 +34,12 @@ class MarvelCharacterDetailViewController: UIViewController {
     nameLabel.text = (character.name == "") ? "Classified: No name given" : character.name
     summaryLabel.text = (character.description == "") ? "Classified: No description given" : character.description
     summaryLabel.sizeToFit()
-    guard let imagePath = character.thumbnail?.imagePath else { return }
-    headerImageView.downloadedFrom(url: imagePath)
+    guard let imagePath = character.thumbnail?.imagePath else {
+      return
+    }
+    guard let imageUrl = URL(string: imagePath) else {
+      return
+    }
+    headerImageView.af_setImage(withURL: imageUrl, placeholderImage: #imageLiteral(resourceName: "placeholder"))
   }
 }

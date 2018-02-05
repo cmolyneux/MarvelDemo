@@ -8,9 +8,10 @@ enum State {
 
 protocol MarvelCharactersDelegate: class {
   func update(state: State)
+  func didRecieveSearchResults(state: State)
 }
 
-class MarvelCharactersController {
+class MarvelCharactersModel {
   weak var delegate: MarvelCharactersDelegate?
   let characterService: CharacterService!
   let searchService: SearchService!
@@ -33,9 +34,9 @@ class MarvelCharactersController {
     searchService.searchForCharactersWhereNameStartsWith(searchTerm) { response in
       switch response {
       case .success(let characters):
-        self.state = .Success(characters)
+       self.delegate?.didRecieveSearchResults(state: .Success(characters))
       case .error(let error):
-        self.state = .Failure(error)
+        self.delegate?.didRecieveSearchResults(state: .Failure(error))
       }
     }
   }

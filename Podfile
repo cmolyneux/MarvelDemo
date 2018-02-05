@@ -13,6 +13,8 @@ target 'MarvelDemo' do
 
   # Pods for MarvelDemo
   pod 'CryptoSwift'
+  pod 'Alamofire'
+  pod 'AlamofireImage'
 
   target 'MarvelDemoTests' do
     inherit! :search_paths
