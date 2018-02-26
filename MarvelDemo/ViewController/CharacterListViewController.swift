@@ -5,14 +5,36 @@ struct CharactersDataSource {
   var searchDataSource: MarvelCharactersDataSource = MarvelCharactersDataSource(character: [])
 }
 
-class MarvelCharactersViewController: UIViewController, UISearchBarDelegate, MarvelCharactersDelegate {
+class CharacterListViewController: UIViewController, UISearchBarDelegate, MarvelCharactersDelegate {
   @IBOutlet var collectionView: UICollectionView!
   @IBOutlet weak var characterSearchBar: UISearchBar!
   
   var marvelCharactersHandler: MarvelCharactersHandler!
   var dataSource: CharactersDataSource = CharactersDataSource()
   var isSearch: Bool = false
+  
+  override func viewDidLoad() {
+    super.viewDidLoad()
+    let session = URLSession(configuration: .default)
+    let characterService = CharacterService(session: session)
+    let searchService = SearchService(session: session)
+    marvelCharactersHandler = MarvelCharactersHandler(characterService: characterService, searchService: searchService)
+    marvelCharactersHandler.delegate = self
+    marvelCharactersHandler.fetchCharacters()
+    characterSearchBar.delegate = self
+    setupCollectionView()
+  }
 
+  func setupCollectionView() {
+    collectionView.register(CharacterCollectionViewCell.nib, forCellWithReuseIdentifier: CharacterCollectionViewCell.identifier)
+    collectionView.dataSource = dataSource.charactersDataSource
+    collectionView.delegate = self
+    let flowLayout = UICollectionViewFlowLayout()
+    flowLayout.itemSize = CGSize(width: UIScreen.main.bounds.width, height: 200)
+    flowLayout.minimumLineSpacing = 0
+    collectionView.collectionViewLayout = flowLayout
+  }
+  
   func update(state: State) {
     switch state {
     case .Loading:
@@ -40,27 +62,8 @@ class MarvelCharactersViewController: UIViewController, UISearchBarDelegate, Mar
     }
   }
   
-  override func viewDidLoad() {
-    super.viewDidLoad()
-    let session = URLSession(configuration: .default)
-    marvelCharactersHandler = MarvelCharactersHandler(characterService: CharacterService(session: session), searchService: SearchService(session: session))
-    marvelCharactersHandler.delegate = self
-    marvelCharactersHandler.fetchCharacters()
-    characterSearchBar.delegate = self
-    setupCollectionView()
-  }
-
-  func setupCollectionView() {
-    collectionView.register(CharacterCollectionViewCell.nib, forCellWithReuseIdentifier: CharacterCollectionViewCell.identifier)
-    collectionView.dataSource = dataSource.charactersDataSource
-    let flowLayout = UICollectionViewFlowLayout()
-    flowLayout.itemSize = CGSize(width: UIScreen.main.bounds.width, height: 200)
-    flowLayout.minimumLineSpacing = 0
-    collectionView.collectionViewLayout = flowLayout
-  }
-  
   func searchForItem(_ searchString: String) {
-    marvelCharactersHandler.requestCharacters(named: searchString)
+    marvelCharactersHandler.fetchCharacters(named: searchString)
   }
   
   func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
@@ -73,7 +76,7 @@ class MarvelCharactersViewController: UIViewController, UISearchBarDelegate, Mar
   }
 }
 
-extension MarvelCharactersViewController: UICollectionViewDelegate {
+extension CharacterListViewController: UICollectionViewDelegate {
   func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
     if indexPath.row == dataSource.charactersDataSource.character.count - 1 {
       marvelCharactersHandler.fetchCharacters()
@@ -82,7 +85,7 @@ extension MarvelCharactersViewController: UICollectionViewDelegate {
   
   func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
     let character = isSearch ? dataSource.searchDataSource.character[indexPath.row] : dataSource.charactersDataSource.character[indexPath.row]
-    let vc = MarvelCharacterDetailViewController(character: character)
+    let vc = CharacterDetailViewController(character: character)
     navigationController?.pushViewController(vc, animated: true)
   }
 }

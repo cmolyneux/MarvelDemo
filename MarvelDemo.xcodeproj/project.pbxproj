@@ -25,7 +25,7 @@
 		12E9E95D2011F9200062B05D /* HttpClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12E9E95C2011F9200062B05D /* HttpClient.swift */; };
 		12E9E9602012449E0062B05D /* CharacterCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12E9E95E2012449E0062B05D /* CharacterCollectionViewCell.swift */; };
 		12E9E9612012449E0062B05D /* CharacterCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 12E9E95F2012449E0062B05D /* CharacterCollectionViewCell.xib */; };
-		12E9E97620164AF60062B05D /* MarvelCharactersModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12E9E97520164AF60062B05D /* MarvelCharactersModel.swift */; };
+		12E9E97620164AF60062B05D /* MarvelCharactersHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12E9E97520164AF60062B05D /* MarvelCharactersHandler.swift */; };
 		6E757CD2A07D431C20BEF527 /* Pods_MarvelDemoProjectTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DA63422CF7DC778C6CF9AB53 /* Pods_MarvelDemoProjectTests.framework */; };
 		DABDF05205BEF05DF2BAFF79 /* Pods_MarvelDemoTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F6576E7ADB21EF1B193118D8 /* Pods_MarvelDemoTests.framework */; };
 		E8EBEC036EFB740DBE5CBD26 /* Pods_MarvelDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F2D4C3344D653E2787D5376F /* Pods_MarvelDemo.framework */; };
@@ -63,7 +63,7 @@
 		12E9E95C2011F9200062B05D /* HttpClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HttpClient.swift; sourceTree = "<group>"; };
 		12E9E95E2012449E0062B05D /* CharacterCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterCollectionViewCell.swift; sourceTree = "<group>"; };
 		12E9E95F2012449E0062B05D /* CharacterCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CharacterCollectionViewCell.xib; sourceTree = "<group>"; };
-		12E9E97520164AF60062B05D /* MarvelCharactersModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarvelCharactersModel.swift; sourceTree = "<group>"; };
+		12E9E97520164AF60062B05D /* MarvelCharactersHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarvelCharactersHandler.swift; sourceTree = "<group>"; };
 		1BD9BBFD5CE3F66443822BE6 /* Pods-MarvelDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MarvelDemo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MarvelDemo/Pods-MarvelDemo.debug.xcconfig"; sourceTree = "<group>"; };
 		1DB4871E0BAD0081E7313055 /* Pods-MarvelDemoProjectTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MarvelDemoProjectTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-MarvelDemoProjectTests/Pods-MarvelDemoProjectTests.release.xcconfig"; sourceTree = "<group>"; };
 		1F60ABC7D94CDB6195F20196 /* Pods-MarvelDemoTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MarvelDemoTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MarvelDemoTests/Pods-MarvelDemoTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -212,7 +212,7 @@
 			isa = PBXGroup;
 			children = (
 				12E5540D201B31F6000F29AD /* MarvelCharactersDataSource.swift */,
-				12E9E97520164AF60062B05D /* MarvelCharactersModel.swift */,
+				12E9E97520164AF60062B05D /* MarvelCharactersHandler.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -457,7 +457,7 @@
 				12E5540E201B31F6000F29AD /* MarvelCharactersDataSource.swift in Sources */,
 				124E3575201B8ADA00B55416 /* MarvelCharacterDetailViewController.swift in Sources */,
 				12E9E95B2011F55E0062B05D /* Characters.swift in Sources */,
-				12E9E97620164AF60062B05D /* MarvelCharactersModel.swift in Sources */,
+				12E9E97620164AF60062B05D /* MarvelCharactersHandler.swift in Sources */,
 				12E9E95D2011F9200062B05D /* HttpClient.swift in Sources */,
 				12E9E93B2011F52F0062B05D /* AppDelegate.swift in Sources */,
 			);

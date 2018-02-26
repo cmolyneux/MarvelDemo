@@ -11,7 +11,7 @@ protocol MarvelCharactersDelegate: class {
   func didRecieveSearchResults(state: State)
 }
 
-class MarvelCharactersModel {
+class MarvelCharactersHandler {
   weak var delegate: MarvelCharactersDelegate?
   let characterService: CharacterService!
   let searchService: SearchService!
@@ -19,9 +19,9 @@ class MarvelCharactersModel {
   var offset = 0
   //TODO: add limit to check whether any more characters to load
   
-  init(session: URLSession) {
-    self.characterService = CharacterService(session: session)
-    self.searchService = SearchService(session: session)
+  init(characterService: CharacterService, searchService: SearchService) {
+    self.characterService = characterService
+    self.searchService = searchService
   }
   
   var state: State = .Loading {
