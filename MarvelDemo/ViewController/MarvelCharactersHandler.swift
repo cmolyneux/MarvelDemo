@@ -11,13 +11,14 @@ protocol MarvelCharactersDelegate: class {
   func didRecieveSearchResults(state: State)
 }
 
+//This will probably all go / be simplified
 class MarvelCharactersHandler {
   weak var delegate: MarvelCharactersDelegate?
   let characterService: CharacterService!
   let searchService: SearchService!
   
+  //TODO: add limit to check whether there are any more characters to fetch
   var offset = 0
-  //TODO: add limit to check whether any more characters to load
   
   init(characterService: CharacterService, searchService: SearchService) {
     self.characterService = characterService
@@ -30,17 +31,6 @@ class MarvelCharactersHandler {
     }
   }
   
-  func requestCharacters(named searchTerm: String) {
-    searchService.searchForCharactersWhereNameStartsWith(searchTerm) { response in
-      switch response {
-      case .success(let characters):
-       self.delegate?.didRecieveSearchResults(state: .Success(characters))
-      case .error(let error):
-        self.delegate?.didRecieveSearchResults(state: .Failure(error))
-      }
-    }
-  }
-  
   func fetchCharacters() {
     state = .Loading
     characterService.getCharacters(with: offset) { response in
@@ -50,6 +40,17 @@ class MarvelCharactersHandler {
         self.state = .Success(characters)
       case .error(let error):
         self.state = .Failure(error)
+      }
+    }
+  }
+  
+  func fetchCharacters(named searchTerm: String) {
+    searchService.searchForCharactersWhereNameStartsWith(searchTerm) { response in
+      switch response {
+      case .success(let characters):
+       self.delegate?.didRecieveSearchResults(state: .Success(characters))
+      case .error(let error):
+        self.delegate?.didRecieveSearchResults(state: .Failure(error))
       }
     }
   }

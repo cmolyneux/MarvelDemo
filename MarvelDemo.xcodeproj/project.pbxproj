@@ -144,7 +144,6 @@
 				12E9E93A2011F52F0062B05D /* AppDelegate.swift */,
 				12E9E970201649FC0062B05D /* View */,
 				12E9E97120164A060062B05D /* ViewController */,
-				12E9E97420164ADA0062B05D /* Controllers */,
 				12E9E962201249270062B05D /* Model */,
 				12E9E97220164A3F0062B05D /* Supporting Files */,
 			);
@@ -182,8 +181,10 @@
 		12E9E97120164A060062B05D /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				12E9E97420164ADA0062B05D /* DataSource */,
 				124E3573201B8ADA00B55416 /* MarvelCharacterDetailViewController.swift */,
 				12E9E93C2011F52F0062B05D /* MarvelCharactersViewController.swift */,
+				12E9E97520164AF60062B05D /* MarvelCharactersHandler.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -208,13 +209,12 @@
 			path = Cells;
 			sourceTree = "<group>";
 		};
-		12E9E97420164ADA0062B05D /* Controllers */ = {
+		12E9E97420164ADA0062B05D /* DataSource */ = {
 			isa = PBXGroup;
 			children = (
 				12E5540D201B31F6000F29AD /* MarvelCharactersDataSource.swift */,
-				12E9E97520164AF60062B05D /* MarvelCharactersHandler.swift */,
 			);
-			path = Controllers;
+			path = DataSource;
 			sourceTree = "<group>";
 		};
 		14D994B82A9FEA1451449830 /* Pods */ = {
