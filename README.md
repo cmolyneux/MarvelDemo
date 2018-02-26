@@ -2,7 +2,8 @@
 
 **Sumamry**
 
-Demo application differing my TheMovieDatabase demo. 
+A very early and experimental demo application differing from my TheMovieDatabase demo.
+
 Following a MVC design pattern (Previous project MVVM).
 Using CocoaPods
 
