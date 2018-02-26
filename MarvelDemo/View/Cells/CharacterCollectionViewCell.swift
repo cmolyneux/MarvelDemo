@@ -1,5 +1,4 @@
 import UIKit
-import Alamofire
 import AlamofireImage
 
 class CharacterCollectionViewCell: UICollectionViewCell {
@@ -12,15 +11,6 @@ class CharacterCollectionViewCell: UICollectionViewCell {
       return
     }
     thumbnailImageview.af_setImage(withURL: imageUrl, placeholderImage: #imageLiteral(resourceName: "placeholder"))
-
-    //Example Alamofire request
-//    Alamofire.request(imageUrl, method: .get).responseImage { response in
-//      guard let image = response.result.value else {
-//        print("error download image")
-//        return
-//      }
-//      self.thumbnailImageview.image = image
-//    }
   }
 }
 

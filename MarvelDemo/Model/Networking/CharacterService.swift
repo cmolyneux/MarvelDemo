@@ -2,7 +2,7 @@ import Foundation
 
 class CharacterService {
   private let characterServicePath = "/v1/public/characters"
-  let api: HttpClient!
+  private let api: HttpClient!
   
   init(session: URLSession) {
     self.api = HttpClient(session: session)
