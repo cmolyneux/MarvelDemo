@@ -5,7 +5,7 @@ struct CharactersDataSource {
   var searchDataSource: MarvelCharactersDataSource = MarvelCharactersDataSource(character: [])
 }
 
-class MarvelCharactersViewController: UIViewController, UISearchBarDelegate, MarvelCharactersDelegate {
+class CharactersViewController: UIViewController, UISearchBarDelegate, MarvelCharactersDelegate {
   @IBOutlet var collectionView: UICollectionView!
   @IBOutlet weak var characterSearchBar: UISearchBar!
   
@@ -60,7 +60,7 @@ class MarvelCharactersViewController: UIViewController, UISearchBarDelegate, Mar
   }
   
   func searchForItem(_ searchString: String) {
-    marvelCharactersHandler.requestCharacters(named: searchString)
+    marvelCharactersHandler.fetchCharacters(named: searchString)
   }
   
   func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
@@ -73,7 +73,7 @@ class MarvelCharactersViewController: UIViewController, UISearchBarDelegate, Mar
   }
 }
 
-extension MarvelCharactersViewController: UICollectionViewDelegate {
+extension CharactersViewController: UICollectionViewDelegate {
   func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
     if indexPath.row == dataSource.charactersDataSource.character.count - 1 {
       marvelCharactersHandler.fetchCharacters()
@@ -82,7 +82,7 @@ extension MarvelCharactersViewController: UICollectionViewDelegate {
   
   func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
     let character = isSearch ? dataSource.searchDataSource.character[indexPath.row] : dataSource.charactersDataSource.character[indexPath.row]
-    let vc = MarvelCharacterDetailViewController(character: character)
-    navigationController?.pushViewController(vc, animated: true)
+    let viewController = CharacterDetailViewController(character: character)
+    navigationController?.pushViewController(viewController, animated: true)
   }
 }

@@ -1,7 +1,7 @@
 import UIKit
 import AlamofireImage
 
-class MarvelCharacterDetailViewController: UIViewController {
+class CharacterDetailViewController: UIViewController {
   @IBOutlet weak var headerImageView: UIImageView!
   @IBOutlet weak var nameLabel: UILabel!
   @IBOutlet weak var summaryLabel: UILabel!
@@ -10,7 +10,7 @@ class MarvelCharacterDetailViewController: UIViewController {
   
   init(character: Character) {
     self.character = character
-    super.init(nibName: "MarvelCharacterDetailView", bundle: nil)
+    super.init(nibName: "CharacterDetailView", bundle: nil)
   }
   
   required init?(coder aDecoder: NSCoder) {

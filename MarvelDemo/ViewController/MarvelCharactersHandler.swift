@@ -43,7 +43,7 @@ class MarvelCharactersHandler {
       }
     }
   }
-  
+
   func fetchCharacters(named searchTerm: String) {
     searchService.searchForCharactersWhereNameStartsWith(searchTerm) { response in
       switch response {
