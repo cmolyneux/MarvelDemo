@@ -2,14 +2,12 @@
 
 **Sumamry**
 
-A very early and experimental demo application differing from my TheMovieDatabase demo.
-
-Following a MVC design pattern (Previous project MVVM).
+A very quick demo application.
 Using CocoaPods
 
 **Setup and Pods used**
 
-The Marvel Developer guide requests API keys (understandably) be kept private. 
+The Marvel Developer guide requests API keys be kept private. 
 To generate your own API Keys register at: https://developer.marvel.com/ 
 I've used CocoaPod-Keys to store the keys inside keychain. 
 
